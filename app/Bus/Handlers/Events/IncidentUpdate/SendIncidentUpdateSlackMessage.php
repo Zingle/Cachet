@@ -44,7 +44,7 @@ class SendIncidentUpdateSlackMessage
                     "fields" => [
                         [
                             "title" => "Incident",
-                            "value" => ($event->update->incident->private ? '(Internal)' : '(Public)') . ' ' . $event->update->incident->name
+                            "value" => ($event->update->incident->visible ? '[Public]' : '[Internal]') . ' ' . $event->update->incident->name
                         ],
                         [
                             "title" => "Status",
