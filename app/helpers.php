@@ -177,3 +177,35 @@ if (!function_exists('cachet_redirect')) {
         return app('redirect')->to($url, $status, $headers);
     }
 }
+
+function get_incident_status_description($incidentStatus, $withEmoji = true) {
+    switch($incidentStatus) {
+        case 1:
+            return ($withEmoji ? ':thinking_face: ' : '') . 'Investigating';
+            break;
+        case 2:
+            return ($withEmoji ? ':mask: ' : '') . 'Identified';
+            break;
+        case 3:
+            return ($withEmoji ? ':grimacing: ' : '') . 'Watching';
+            break;
+        case 4:
+            return ($withEmoji ? ':thumbsup: ' : '') . 'Fixed';
+            break;
+    }
+}
+
+function get_incident_status_color($incidentStatus) {
+    switch($incidentStatus) {
+        case 1:
+        case 2:
+            return 'danger';
+            break;
+        case 3:
+            return 'warning';
+            break;
+        case 4:
+            return 'good';
+            break;
+    }
+}

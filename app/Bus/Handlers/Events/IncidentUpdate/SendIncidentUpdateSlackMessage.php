@@ -25,9 +25,39 @@ class SendIncidentUpdateSlackMessage
      */
     public function handle(IncidentUpdateWasReportedEvent $event)
     {
-        \Log::info('incident was updated');
-        \Log::info(json_encode($event->incident));
-        \Log::info(json_encode($event));
+        $client = new Client();
+
+        $client->post(env('SLACK_WEBHOOK_URL'), [
+            'json' => $this->getPayload($event)
+        ]);
     }
 
+    private function getPayload($event) {
+        get_incident_status_description();
+        return [
+            "attachments" => [
+                [
+                    "title" => 'Incident ' . $event->update->incident_id . " updated by " . $event->user->username,
+                    "title_link" => "https://status.zingle.me/incidents/" . $event->update->incident_id,
+                    "color" => get_incident_status_color($event->update->status)
+                ]
+            ],
+            "fields" => [
+                [
+                    "title" => "Incident",
+                    "value" => ($event->update->incident->private ? '(Internal)' : '(Public)') . ' ' . $event->update->incident->name
+                ],
+                [
+                    "title" => "Status",
+                    "value" => get_incident_status_description($event->update->status),
+                    "short" => true
+                ],
+                [
+                    "title" => "Component",
+                    "value" => @$event->update->incident->component->name ?? 'None',
+                    "short" => true
+                ]
+            ]
+        ];
+    }
 }
