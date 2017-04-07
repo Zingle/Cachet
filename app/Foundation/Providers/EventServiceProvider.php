@@ -49,24 +49,27 @@ class EventServiceProvider extends ServiceProvider
             'CachetHQ\Cachet\Bus\Handlers\Events\Component\CleanupComponentSubscriptionsHandler',
         ],
         'CachetHQ\Cachet\Bus\Events\Component\ComponentWasUpdatedEvent' => [
-            //
+            'CachetHQ\Cachet\Bus\Handlers\Events\Component\SendComponentUpdateSlackEvent',
         ],
         'CachetHQ\Cachet\Bus\Events\IncidentUpdate\IncidentUpdateWasRemovedEvent' => [
             //
         ],
         'CachetHQ\Cachet\Bus\Events\IncidentUpdate\IncidentUpdateWasReportedEvent' => [
             'CachetHQ\Cachet\Bus\Handlers\Events\IncidentUpdate\SendIncidentUpdateEmailNotificationHandler',
+            'CachetHQ\Cachet\Bus\Handlers\Events\IncidentUpdate\SendIncidentUpdateSlackMessage'
         ],
         'CachetHQ\Cachet\Bus\Events\IncidentUpdate\IncidentUpdateWasUpdatedEvent' => [
             //
         ],
         'CachetHQ\Cachet\Bus\Events\Incident\IncidentWasCreatedEvent' => [
             'CachetHQ\Cachet\Bus\Handlers\Events\Incident\SendIncidentEmailNotificationHandler',
+            'CachetHQ\Cachet\Bus\Handlers\Events\Incident\SendIncidentCreatedSlackMessage'
         ],
         'CachetHQ\Cachet\Bus\Events\Incident\IncidentWasRemovedEvent' => [
             //
         ],
         'CachetHQ\Cachet\Bus\Events\Incident\IncidentWasUpdatedEvent' => [
+
             //
         ],
         'CachetHQ\Cachet\Bus\Events\Incident\IncidentWasRemovedEvent' => [
