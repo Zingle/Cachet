@@ -61,19 +61,19 @@ class SendComponentUpdateSlackMessage
     private function getStatusDescription($component) {
         switch($component->status) {
             case 0:
-                return 'Unknown :confused:';
+                return "'Unknown' :confused:";
                 break;
             case 1:
-                return 'Operational :thumbsup:';
+                return "'Operational' :thumbsup:";
                 break;
             case 2:
-                return 'Performance Issues :fearful:';
+                return "'Performance Issues' :fearful:";
                 break;
             case 3:
-                return 'Partial Outage :cold_sweat:';
+                return "'Partial Outage' :cold_sweat:";
                 break;
             case 4:
-                return 'Major Outage :thumbsdown:';
+                return "'Major Outage' :thumbsdown:";
                 break;
         }
     }

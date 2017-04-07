@@ -11,11 +11,7 @@
 
 namespace CachetHQ\Cachet\Bus\Handlers\Events\IncidentUpdate;
 
-use CachetHQ\Cachet\Bus\Events\Incident\IncidentWasUpdatedEvent;
-use CachetHQ\Cachet\Models\Subscriber;
-use Illuminate\Contracts\Mail\MailQueue;
-use Illuminate\Mail\Message;
-use McCool\LaravelAutoPresenter\Facades\AutoPresenter;
+use CachetHQ\Cachet\Bus\Events\IncidentUpdate\IncidentUpdateWasReportedEvent;
 
 class SendIncidentUpdateSlackMessage
 {
@@ -23,11 +19,11 @@ class SendIncidentUpdateSlackMessage
     /**
      * Handle the event.
      *
-     * @param \CachetHQ\Cachet\Bus\Events\Incident\IncidentWasUpdatedEvent $event
+     * @param \CachetHQ\Cachet\Bus\Events\Incident\IncidentUpdateWasReportedEvent $event
      *
      * @return void
      */
-    public function handle(IncidentWasUpdatedEvent $event)
+    public function handle(IncidentUpdateWasReportedEvent $event)
     {
         \Log::info('incident was updated');
         \Log::info(json_encode($event->incident));
