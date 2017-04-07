@@ -39,25 +39,26 @@ class SendIncidentUpdateSlackMessage
                 [
                     "title" => 'Incident ' . $event->update->incident_id . " updated by " . $event->user->username,
                     "title_link" => "https://status.zingle.me/incidents/" . $event->update->incident_id,
-                    "color" => get_incident_status_color($event->update->status)
-                ]
+                    "text" => $event->update->message,
+                    "color" => get_incident_status_color($event->update->status),
+                    "fields" => [
+                        [
+                            "title" => "Incident",
+                            "value" => ($event->update->incident->private ? '(Internal)' : '(Public)') . ' ' . $event->update->incident->name
+                        ],
+                        [
+                            "title" => "Status",
+                            "value" => get_incident_status_description($event->update->status),
+                            "short" => true
+                        ],
+                        [
+                            "title" => "Component",
+                            "value" => @$event->update->incident->component->name ?? 'None',
+                            "short" => true
+                        ]
+                    ]
+                ],
             ],
-            "fields" => [
-                [
-                    "title" => "Incident",
-                    "value" => ($event->update->incident->private ? '(Internal)' : '(Public)') . ' ' . $event->update->incident->name
-                ],
-                [
-                    "title" => "Status",
-                    "value" => get_incident_status_description($event->update->status),
-                    "short" => true
-                ],
-                [
-                    "title" => "Component",
-                    "value" => @$event->update->incident->component->name ?? 'None',
-                    "short" => true
-                ]
-            ]
         ];
     }
 }
