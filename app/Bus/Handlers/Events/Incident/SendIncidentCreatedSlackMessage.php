@@ -11,6 +11,7 @@
 
 namespace CachetHQ\Cachet\Bus\Handlers\Events\Incident;
 
+use CachetHQ\Cachet\Bus\Events\Incident\IncidentWasCreatedEvent;
 use CachetHQ\Cachet\Bus\Events\Incident\IncidentWasReportedEvent;
 use CachetHQ\Cachet\Models\Subscriber;
 use GuzzleHttp\Client;
