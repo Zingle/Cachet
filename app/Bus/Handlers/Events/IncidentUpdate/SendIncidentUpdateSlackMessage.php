@@ -34,7 +34,6 @@ class SendIncidentUpdateSlackMessage
     }
 
     private function getPayload($event) {
-        get_incident_status_description();
         return [
             "attachments" => [
                 [
