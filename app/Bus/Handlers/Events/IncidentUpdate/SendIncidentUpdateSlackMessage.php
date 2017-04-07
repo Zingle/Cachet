@@ -12,6 +12,7 @@
 namespace CachetHQ\Cachet\Bus\Handlers\Events\IncidentUpdate;
 
 use CachetHQ\Cachet\Bus\Events\IncidentUpdate\IncidentUpdateWasReportedEvent;
+use GuzzleHttp\Client;
 
 class SendIncidentUpdateSlackMessage
 {
