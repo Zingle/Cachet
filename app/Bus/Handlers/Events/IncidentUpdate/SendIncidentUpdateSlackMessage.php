@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace CachetHQ\Cachet\Bus\Handlers\Events\Incident;
+namespace CachetHQ\Cachet\Bus\Handlers\Events\IncidentUpdate;
 
 use CachetHQ\Cachet\Bus\Events\Incident\IncidentWasUpdatedEvent;
 use CachetHQ\Cachet\Models\Subscriber;
